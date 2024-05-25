@@ -272,7 +272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textMeshProObject: {fileID: 136966493}
-  nextSceneName: GameScene
+  nextSceneName: StartStory
   blinkDuration: 2
 --- !u!1 &519420028
 GameObject:

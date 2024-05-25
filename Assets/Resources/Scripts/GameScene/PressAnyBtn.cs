@@ -9,7 +9,7 @@ public class PressAnyBtn : MonoBehaviour
     private TMP_Text textMeshProObject; //===깜빡일 텍스트 메쉬 프로 객체===//
 
     [SerializeField]
-    private string nextSceneName = "GameScene"; //===전환할 씬의 이름===//
+    private string nextSceneName = "StartStory"; //===전환할 씬의 이름===//
 
     [SerializeField]
     private float blinkDuration = 1.0f; //===깜빡임 지속 시간===//
