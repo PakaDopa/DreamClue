@@ -39,6 +39,7 @@ public class GameControler : MonoBehaviour
         _currentSubIndex++;
         if (bool.Parse(args.value[0].ToString()) == true)
         {
+            EventManager.Instance.PostNotification(EVENT_TYPE.SHOW_NARATION, this, new TransformEventArgs(null, true));
             EndSub();
             CustomDebug.Log("꿈에서 나옵니다.");
         }
@@ -73,6 +74,7 @@ public class GameControler : MonoBehaviour
             _currentSub = GameManager.Instance.GetSubFlowData(_currentMain[0].dialogueId);
 
             EventManager.Instance.PostNotification(EVENT_TYPE.ENTER_DREAM, this, new TransformEventArgs(null, _currentSub));
+            EventManager.Instance.PostNotification(EVENT_TYPE.SHOW_NARATION, this, new TransformEventArgs(null, false));
             
         }
         else //꿈이 아닌 경우

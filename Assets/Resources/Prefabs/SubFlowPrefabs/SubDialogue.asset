@@ -14,6 +14,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   datas:
   - Did: Dia_1
+    actorName: "\uB9C8\uB9AC / \uC8FC\uC810 \uC5EC\uC778"
+    sfxFileName: 
+    bgmFileName: 
+    contexts:
+    - "\uC81C \uB538 \uC774\uC57C\uAE30\uB97C \uD558\uC2DC\uB2C8 \uC81C\uAC00 \uB2F5\uC744
+      \uD55C \uAC83 \uBFD0\uC785\uB2C8\uB2E4."
+    - 
+    - 
+    - 
+  - Did: Dia_1
+    actorName: "\uD074\uB85C\uC5D0 / \uC5EC\uC790 \uC544\uC774"
+    sfxFileName: 
+    bgmFileName: 
+    contexts:
+    - "\uC804 \uC601\uC8FC\uB2D8 \uC9D1\uC5D0\uC11C \uC228\uBC14\uAF2D\uC9C8\uC744
+      \uD558\uACE0 \uC788\uC5C8\uC5B4\uC694!"
+    - 
+    - 
+    - 
+  - Did: Dia_1
+    actorName: "\uB9C8\uB9AC / \uC8FC\uC810 \uC5EC\uC778"
+    sfxFileName: 
+    bgmFileName: 
+    contexts:
+    - "\uC598\uC57C. \uC65C \uC790\uAFB8 \uC190\uC744 \uAE01\uACE0 \uADF8\uB7EC\uB2C8?
+      \uB610 \uAC00\uC8FD\uAC19\uC740 \uAC70 \uB9CC\uC84C\uB2C8?"
+    - 
+    - 
+    - 
+  - Did: Dia_1
     actorName: "\uD074\uB85C\uC5D0 / \uC5EC\uC790 \uC544\uC774"
     sfxFileName: 
     bgmFileName: 

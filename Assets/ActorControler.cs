@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Linq;
@@ -21,7 +22,11 @@ public class ActorControler : MonoBehaviour
     [Header("UI Component")]
     public TMP_Text _textBox;
     public TMP_Text _nameTextbox;
-    
+
+    [Header("UI Component")]
+    [SerializeField] public RectTransform _image;
+    [SerializeField] public RectTransform _originImage;
+
     [SerializeField]
     public List<string> _currentText;
     private int _index = 0;
@@ -49,7 +54,8 @@ public class ActorControler : MonoBehaviour
         var bnt = GetComponent<Button>();
         bnt.enabled = false;
         _textBox.enabled = false;
-        
+        ScaleUPEffect(false);
+
         if (args.value[0].ToString() != _actorName)
         {
             // 내가 해당되는 버튼이 아닌거임 =ㅅ=
@@ -75,6 +81,7 @@ public class ActorControler : MonoBehaviour
         var bnt = GetComponent<Button>();
         bnt.enabled = false;
         _textBox.enabled = false;
+        ScaleUPEffect(false);
 
         // 꿈에서 진행되는 대화가 가능한 오브젝트는, 매개변수로부터 전달 받아서 
         // _currentText Init 해줘야함
@@ -115,6 +122,17 @@ public class ActorControler : MonoBehaviour
         if (id != _actorName)
             _textBox.enabled = false;
     }
+    private void ScaleUPEffect(bool enable)
+    {
+        if(enable)
+        {
+            _image.DOScale(1.125f, 0.25f).SetEase(Ease.InOutCirc);
+        }
+        else
+        {
+            _image.DOScale(1.0f, 0.25f);
+        }
+    }
     public void ClickBnt()
     {
         if(_dreamMode)
@@ -131,6 +149,8 @@ public class ActorControler : MonoBehaviour
             }
             else
             {
+                //Effect On
+                ScaleUPEffect(true);
                 _textBox.enabled = true;
                 _textBox.text = _currentText[_index].ToString();
                 _index++;
@@ -145,6 +165,7 @@ public class ActorControler : MonoBehaviour
             }
             else
             {
+                ScaleUPEffect(true);
                 _textBox.text = _currentText[_index].ToString();
                 _index++;
             }

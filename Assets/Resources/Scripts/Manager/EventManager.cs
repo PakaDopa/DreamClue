@@ -26,6 +26,7 @@ public enum EVENT_TYPE
     ENTER_NORMAL,       // 노멀(낮) 모드로 전환합니다.
 
     SHOW_OFF_TEXT,      // 꿈 상태에서 다른 오브젝트 클릭시 채팅창 가리는 용도
+    SHOW_NARATION,
 }
 
 public class EventManager : Singleton<EventManager>
