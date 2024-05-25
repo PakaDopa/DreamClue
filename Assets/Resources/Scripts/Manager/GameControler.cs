@@ -14,6 +14,7 @@ public class GameControler : MonoBehaviour
     Dictionary<string, List<MainFlowData>> _datas;
     List<string> _keys;
 
+    [SerializeField] private RectTransform _answerPanel;
     void Start()
     {
         EventManager.Instance.AddListener(EVENT_TYPE.UPDATE_SUB_INDEX, UpdateSubIndex);
@@ -91,5 +92,6 @@ public class GameControler : MonoBehaviour
     void EndMain()
     {
         CustomDebug.Log("∞‘¿” ≥°!!");
+        _answerPanel.gameObject.SetActive(true);
     }
 }
