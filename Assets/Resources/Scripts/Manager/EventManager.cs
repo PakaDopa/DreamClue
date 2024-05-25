@@ -14,14 +14,18 @@ public class TransformEventArgs : EventArgs
 }
 public enum EVENT_TYPE
 {
-    COMPLETE_MAIN_EVENT, // 현재 처리중인 Mid가 완전히 끝이나서 다음 Mid로 넘어가야 함.
-    UPDATE_MAIN_INDEX,   // 현재 처리중인 Mid의 다음으로 넘어감. 인덱스가 끝에 도달하면, COMPLETE 이벤트 실행
+    COMPLETE_MAIN_EVENT,// 현재 처리중인 Mid가 완전히 끝이나서 다음 Mid로 넘어가야 함.
+    UPDATE_MAIN_INDEX,  // 현재 처리중인 Mid의 다음으로 넘어감. 인덱스가 끝에 도달하면, COMPLETE 이벤트 실행
 
-    COMPLETE_SUB_EVENT,  // 현재 처리중인 Did가 완전히 끝이나서 Mid가 끝남.
-    UPDATE_SUB_INDEX,    // 현재 처리중인 Did의 텍스트를 다 처리해서 다음 Did를 실행
+    COMPLETE_SUB_EVENT, // 현재 처리중인 Did가 완전히 끝이나서 Mid가 끝남.
+    UPDATE_SUB_INDEX,   // 현재 처리중인 Did의 텍스트를 다 처리해서 다음 Did를 실행
 
-    SHOW_TEXT,           // 현재 가르키고 있는 Did의 텍스트를 알맞은 Textbox에 전시
-    
+    SHOW_TEXT,          // 현재 가르키고 있는 Did의 텍스트를 알맞은 Textbox에 전시
+
+    ENTER_DREAM,        // 꿈 모드로 전환합니다. 
+    ENTER_NORMAL,       // 노멀(낮) 모드로 전환합니다.
+
+    SHOW_OFF_TEXT,      // 꿈 상태에서 다른 오브젝트 클릭시 채팅창 가리는 용도
 }
 
 public class EventManager : Singleton<EventManager>

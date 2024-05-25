@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.ComponentModel.Design;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,25 +27,29 @@ public class ActorControler : MonoBehaviour
     private int _index = 0;
     public ActorState _state = ActorState.NONE;
 
+    [SerializeField]
+    bool _dreamMode = false;
+
     private void Awake()
     {
         _currentText = new List<string>();
 
         EventManager.Instance.AddListener(EVENT_TYPE.SHOW_TEXT, ShowText);
-
+        EventManager.Instance.AddListener(EVENT_TYPE.ENTER_DREAM, EnterDream);
+        EventManager.Instance.AddListener(EVENT_TYPE.ENTER_NORMAL, EnterNormal);
+        EventManager.Instance.AddListener(EVENT_TYPE.SHOW_OFF_TEXT, OffShowText);
         if (_nameTextbox != null)
             _nameTextbox.text = _actorName;
     }
     private void ShowText(EVENT_TYPE eventType, Component Sender, TransformEventArgs args = null)
     {
-        // 0 index -> actorType
-        // 1 index -> text
         if (args.value.Length <= 0)
             return;
 
         var bnt = GetComponent<Button>();
         bnt.enabled = false;
         _textBox.enabled = false;
+        
         if (args.value[0].ToString() != _actorName)
         {
             // 내가 해당되는 버튼이 아닌거임 =ㅅ=
@@ -60,18 +66,97 @@ public class ActorControler : MonoBehaviour
 
         ClickBnt();
     }
+    private void EnterDream(EVENT_TYPE eventType, Component Sender, TransformEventArgs args = null)
+    {
+        //초기화
+        _currentText.Clear();
+        _index = 0;
 
+        var bnt = GetComponent<Button>();
+        bnt.enabled = false;
+        _textBox.enabled = false;
+
+        // 꿈에서 진행되는 대화가 가능한 오브젝트는, 매개변수로부터 전달 받아서 
+        // _currentText Init 해줘야함
+        _currentText.Clear();
+        foreach(SubFlowData data in (List<SubFlowData>)args.value[0])
+        {
+            if (data.actorName == _actorName)
+            {
+                _currentText = data.contexts.ToList();
+                break;
+            }
+        }
+
+        if (_currentText.Count != 0)
+        {
+            bnt.enabled = true;
+        }
+        // 모드 변경
+        _dreamMode = true;
+    }
+    private void EnterNormal(EVENT_TYPE eventType, Component Sender, TransformEventArgs args = null)
+    {
+        //초기화
+        _currentText.Clear();
+        _index = 0;
+
+        var bnt = GetComponent<Button>();
+        bnt.enabled = false;
+        _textBox.enabled = false;
+
+        // 모드 변경
+        _dreamMode = false;
+    }
+    private void OffShowText(EVENT_TYPE eventType, Component Sender, TransformEventArgs args = null)
+    {
+        string id = args.value[0].ToString();
+
+        if (id != _actorName)
+            _textBox.enabled = false;
+    }
     public void ClickBnt()
     {
-        if (_currentText.Count <= _index || _currentText[_index] == "") //다음 Did로 넘어가야함/
+        if(_dreamMode)
         {
-            //_textBox.enabled = false;
-            EventManager.Instance.PostNotification(EVENT_TYPE.UPDATE_SUB_INDEX, this, new TransformEventArgs(null));
+            // 채팅창 다 꺼라
+            EventManager.Instance.PostNotification(EVENT_TYPE.SHOW_OFF_TEXT,
+                    this,
+                    new TransformEventArgs(null, _actorName));
+
+            if (_currentText.Count <= _index || _currentText[_index] == "") // 제공되는 딥 이야기 끝~
+            {
+                CustomDebug.Log("더 이상 볼 이야기가 없습니다~");
+                return;
+            }
+            else
+            {
+                _textBox.enabled = true;
+                _textBox.text = _currentText[_index].ToString();
+                _index++;
+            }
         }
         else
         {
-            _textBox.text = _currentText[_index].ToString();
-            _index++;
+            if (_currentText.Count <= _index || _currentText[_index] == "") //다음 Did로 넘어가야함/
+            {
+                //_textBox.enabled = false;
+                EventManager.Instance.PostNotification(EVENT_TYPE.UPDATE_SUB_INDEX, this, new TransformEventArgs(null, false));
+            }
+            else
+            {
+                _textBox.text = _currentText[_index].ToString();
+                _index++;
+            }
+        }
+
+    }
+    public void ExitDream()
+    {
+        if(_dreamMode)
+        {
+            EventManager.Instance.PostNotification(EVENT_TYPE.ENTER_NORMAL, this, new TransformEventArgs(null));
+            EventManager.Instance.PostNotification(EVENT_TYPE.UPDATE_SUB_INDEX, this, new TransformEventArgs(null, true));
         }
     }
 }

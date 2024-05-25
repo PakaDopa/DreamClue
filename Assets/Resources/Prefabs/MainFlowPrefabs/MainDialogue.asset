@@ -28,4 +28,4 @@ MonoBehaviour:
   - Mid: Story004
     dialogueId: Dia_4
     isEnd: 1
-    isDream: 0
+    isDream: 1

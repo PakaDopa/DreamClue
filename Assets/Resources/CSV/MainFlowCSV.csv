@@ -2,4 +2,4 @@ Mid,dialogueId,isEnd,isDream
 Story001,Dia_1,,
 Story002,Dia_2,,TRUE
 Story003,Dia_3,,
-Story004,Dia_4,TRUE,
+Story004,Dia_4,TRUE,TRUE

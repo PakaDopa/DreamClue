@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using Utility;
 
@@ -17,10 +16,7 @@ public class GameControler : MonoBehaviour
 
     void Start()
     {
-        //EventManager.Instance.AddListener(EVENT_TYPE.UPDATE_MAIN_INDEX, UpdateMainIndex);
         EventManager.Instance.AddListener(EVENT_TYPE.UPDATE_SUB_INDEX, UpdateSubIndex);
-        //EventManager.Instance.AddListener(EVENT_TYPE.COMPLETE_MAIN_EVENT, EndMain);
-        //EventManager.Instance.AddListener(EVENT_TYPE.COMPLETE_SUB_EVENT, EndSub);
 
         //초기 Init
         _datas = GameManager.Instance.GetMainFlowData();
@@ -37,14 +33,14 @@ public class GameControler : MonoBehaviour
             new TransformEventArgs(null, name, contexts));
     }
 
-    void UpdateMainIndex(EVENT_TYPE eventType, Component Sender, TransformEventArgs args = null)
-    {
-
-    }
-
     void UpdateSubIndex(EVENT_TYPE eventType, Component Sender, TransformEventArgs args = null)
     {
         _currentSubIndex++;
+        if (bool.Parse(args.value[0].ToString()) == true)
+        {
+            EndSub();
+            CustomDebug.Log("꿈에서 나옵니다.");
+        }
         //CustomDebug.Log("   _currentSubIndex " + _currentSubIndex);
         if (_currentSub.Count <= _currentSubIndex)
             EndSub();
@@ -63,23 +59,33 @@ public class GameControler : MonoBehaviour
     {
         _currentMainIndex++;
         if (_currentMainIndex >= _keys.Count)
+        {
             EndMain();
+            return;
+        }
         
         string key = _keys[_currentMainIndex];
         _currentMain = _datas[_keys[_currentMainIndex]];
 
-        if (_currentMain[0].isDream)
-            CustomDebug.Log(" Dream 이벤트입니다.");
+        if (_currentMain[0].isDream) // 꿈인 경우
+        {
+            _currentSub = GameManager.Instance.GetSubFlowData(_currentMain[0].dialogueId);
 
-        _currentSub = GameManager.Instance.GetSubFlowData(_currentMain[0].dialogueId);
-        _currentSubIndex = 0;
+            EventManager.Instance.PostNotification(EVENT_TYPE.ENTER_DREAM, this, new TransformEventArgs(null, _currentSub));
+            
+        }
+        else //꿈이 아닌 경우
+        {
+            _currentSub = GameManager.Instance.GetSubFlowData(_currentMain[0].dialogueId);
+            _currentSubIndex = 0;
 
-        string name = _currentSub[_currentSubIndex].actorName;
-        List<string> contexts = _currentSub[_currentSubIndex].contexts.ToList();
-  
-        EventManager.Instance.PostNotification(EVENT_TYPE.SHOW_TEXT,
-            this,
-            new TransformEventArgs(null, name, contexts));
+            string name = _currentSub[_currentSubIndex].actorName;
+            List<string> contexts = _currentSub[_currentSubIndex].contexts.ToList();
+
+            EventManager.Instance.PostNotification(EVENT_TYPE.SHOW_TEXT,
+                this,
+                new TransformEventArgs(null, name, contexts));
+        }
     }
     //게임 종료
     void EndMain()
