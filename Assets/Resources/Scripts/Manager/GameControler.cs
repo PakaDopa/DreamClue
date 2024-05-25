@@ -1,16 +1,7 @@
-
 using System.Collections.Generic;
 using System.Linq;
-using TMPro;
 using UnityEngine;
-
-public enum Actor
-{
-    NAME0 = 0,
-    NAME1 = 1,
-    NAME2 = 2,
-    NAME3 = 3,
-}
+using Utility;
 
 public class GameControler : MonoBehaviour
 {
@@ -21,10 +12,6 @@ public class GameControler : MonoBehaviour
 
     List<SubFlowData> _currentSub;
     int _currentSubIndex = 0;
-
-    [Header("UI Component")]
-    public TMP_Text mainText;
-    public TMP_Text[] actorText;
 
     void Start()
     {
@@ -37,10 +24,13 @@ public class GameControler : MonoBehaviour
         _currentMain = datas.First().Value;
 
         _currentSub = GameManager.Instance.GetSubFlowData(_currentMain[_currentMainIndex].dialogueId);
+        string name = _currentSub[_currentSubIndex].actorName;
+        List<string> contexts = _currentSub[_currentSubIndex].contexts.ToList();
 
+        CustomDebug.Log(string.Format("{0}  {1}", name, contexts[0]));  
         EventManager.Instance.PostNotification(EVENT_TYPE.SHOW_TEXT,
             this,
-            new TransformEventArgs(null, _currentSub[_currentSubIndex].actorName, _currentSub[_currentSubIndex].contexts));
+            new TransformEventArgs(null, name, contexts));
     }
 
     void UpdateMainIndex(EVENT_TYPE eventType, Component Sender, TransformEventArgs args = null)

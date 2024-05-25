@@ -68,7 +68,7 @@ public class PreloadData : MonoBehaviour
             data.Mid = row["Mid"].ToString();
             data.dialogueId = row["dialogueId"].ToString();
             bool.TryParse(row["isEnd"].ToString(), out data.isEnd);
-            bool.TryParse(row["isAuto"].ToString(), out data.isAuto);
+            //bool.TryParse(row["isAuto"].ToString(), out data.isAuto);
             bool.TryParse(row["isDream"].ToString(), out data.isDream);
 
             datas.Add(data);
@@ -96,7 +96,7 @@ public class PreloadData : MonoBehaviour
 
             data.Did = row["Did"].ToString();
             data.actorName = row["name"].ToString();
-            bool.TryParse(row["isInteraction"].ToString(), out data.isInteraction);
+            //bool.TryParse(row["isInteraction"].ToString(), out data.isInteraction);
             data.sfxFileName = row["Sfx"].ToString();
             data.bgmFileName = row["bgm"].ToString();
 

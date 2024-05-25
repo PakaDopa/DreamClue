@@ -10,7 +10,7 @@ public class SubFlowData
 
     public string Did;                  // 다이얼로그 ID
     public string actorName;            // 액터(캐릭터) 이름
-    public bool isInteraction = false;  // 상호작용을 해야하는 다이얼로그
+    //public bool isInteraction = false;  // 상호작용을 해야하는 다이얼로그
     public string sfxFileName;          // sfx 파일 이름
     public string bgmFileName;          // bgm 파일 이름
     public string[] contexts;           // 표시할 이름

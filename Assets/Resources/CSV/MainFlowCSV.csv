@@ -1,4 +1,4 @@
-Mid,dialogueId,isEnd,isAuto,isDream
-Story001,Dia_1,,TRUE,
-Story001,Dia_1,,,TRUE
-Story002,Dia_2,TRUE,,
+Mid,dialogueId,isEnd,isDream
+Story001,Dia_1,,
+Story002,Dia_2,,TRUE
+Story003,Dia_3,TRUE,
