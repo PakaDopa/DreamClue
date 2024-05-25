@@ -12,7 +12,7 @@ using Utility;
 public class CheckAnswer : MonoBehaviour
 {
     [Header("UI Component")]
-    private RectTransform[] _layouts;
+    [SerializeField] private RectTransform[] _layouts;
 
     [SerializeField]
     public int[] answers;
