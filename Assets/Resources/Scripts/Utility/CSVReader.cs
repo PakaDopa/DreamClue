@@ -2,19 +2,19 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.IO;
 
-public class CSVReader
+public static class CSVReader
 {
     private static string SPLIT_RE = @",(?=(?:[^""]*""[^""]*"")*(?![^""]*""))";
     private static string LINE_SPLIT_RE = @"\r\n|\n\r|\n|\r";
     private static char[] TRIM_CHARS = { '\"' };
 
-    public List<Dictionary<string, object>> Read(string file)
+    public static List<Dictionary<string, object>> Read(string file)
     {
         var resultList = new List<Dictionary<string, object>>();
         string[] lines;
 
         //string fileFullPath = CustomPath.Path.CSV_Path + file;
-        string fileFullPath = "";
+        string fileFullPath = file;
         if (File.Exists(fileFullPath))
         {
             string source;

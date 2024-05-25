@@ -354,6 +354,7 @@ GameObject:
   - component: {fileID: 794907858}
   - component: {fileID: 794907857}
   - component: {fileID: 794907856}
+  - component: {fileID: 794907859}
   m_Layer: 5
   m_Name: StartBnt
   m_TagString: Untagged
@@ -425,7 +426,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 794907857}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 794907859}
+        m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
+        m_MethodName: ChangeScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &794907857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -464,6 +477,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 794907854}
   m_CullTransparentMesh: 1
+--- !u!114 &794907859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 794907854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfc67e833ad4db8418054096223b39c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sceneName: PreloadScene
 --- !u!1 &936793672
 GameObject:
   m_ObjectHideFlags: 0

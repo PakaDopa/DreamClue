@@ -1,11 +1,4 @@
-﻿,,,리소스명,,,,,
-,,,1번 실행,루프(다음 bgm 만나면 다음 bgm 재생),,,,
-Did,name,isInteraction,Sfx,bgm,context1,context2,context3,context4
-Dia_1,,,,,꿈을 꾸는중..,,,
-Dia_1,,,,,으아아아..,,,
-Dia_1,탁기,TRUE,,,너 이녀석 누구야,왜 모자를 썼지?,아니 잖아,
-Dia_1,홍재,TRUE,,,너야 말로!,,,
-Dia_1,강수,TRUE,,,너 이녀석 누구야,우리 왜 이러는 거야?,,
-Dia_1,홍재,,,,너 팔에 피가 보이는데,,,
-Dia_2,홍재,,,,우리가 뭘 했지,,,
-Dia_2,홍재,,,,나 아파,,,
+Mid,dialogueId,isEnd,isAuto,isDream
+Story001,Dia_1,,TRUE,
+Story001,Dia_1,,,TRUE
+Story002,Dia_2,TRUE,,
