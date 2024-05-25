@@ -23,5 +23,9 @@ MonoBehaviour:
     isDream: 1
   - Mid: Story003
     dialogueId: Dia_3
+    isEnd: 0
+    isDream: 0
+  - Mid: Story004
+    dialogueId: Dia_4
     isEnd: 1
     isDream: 0

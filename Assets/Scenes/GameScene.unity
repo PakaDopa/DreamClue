@@ -407,7 +407,7 @@ PrefabInstance:
       objectReference: {fileID: 825289692}
     - target: {fileID: 2728569410726710885, guid: 20eb6f6b595d9624e80d5ce25d2c110e, type: 3}
       propertyPath: _actorName
-      value: "\uC70C\uB9AC\uC5C4/\uAE30\uC0AC"
+      value: "\uC70C\uB9AC\uC5C4 / \uAE30\uC0AC"
       objectReference: {fileID: 0}
     - target: {fileID: 2728569410726710885, guid: 20eb6f6b595d9624e80d5ce25d2c110e, type: 3}
       propertyPath: _nameTextbox
@@ -788,7 +788,7 @@ PrefabInstance:
       objectReference: {fileID: 1583212359}
     - target: {fileID: 2728569410726710885, guid: 20eb6f6b595d9624e80d5ce25d2c110e, type: 3}
       propertyPath: _actorName
-      value: "\uC870\uC138\uD504/\uC5ED\uBCD1\uC758\uC0AC"
+      value: "\uC870\uC138\uD504 / \uC5ED\uBCD1\uC758\uC0AC"
       objectReference: {fileID: 0}
     - target: {fileID: 2728569410726710885, guid: 20eb6f6b595d9624e80d5ce25d2c110e, type: 3}
       propertyPath: _nameTextbox
@@ -928,7 +928,7 @@ PrefabInstance:
       objectReference: {fileID: 1662449740}
     - target: {fileID: 2728569410726710885, guid: 20eb6f6b595d9624e80d5ce25d2c110e, type: 3}
       propertyPath: _actorName
-      value: "\uB9C8\uB9AC/\uC8FC\uC810\uC5EC\uC778"
+      value: "\uB9C8\uB9AC / \uC8FC\uC810 \uC5EC\uC778"
       objectReference: {fileID: 0}
     - target: {fileID: 2728569410726710885, guid: 20eb6f6b595d9624e80d5ce25d2c110e, type: 3}
       propertyPath: _nameTextbox
@@ -1076,7 +1076,7 @@ PrefabInstance:
       objectReference: {fileID: 1789076252}
     - target: {fileID: 2728569410726710885, guid: 20eb6f6b595d9624e80d5ce25d2c110e, type: 3}
       propertyPath: _actorName
-      value: "\uC708\uCCB4\uC2A4\uD130/\uC601\uC8FC"
+      value: "\uD074\uB85C\uC5D0 / \uC5EC\uC790 \uC544\uC774"
       objectReference: {fileID: 0}
     - target: {fileID: 2728569410726710885, guid: 20eb6f6b595d9624e80d5ce25d2c110e, type: 3}
       propertyPath: _nameTextbox
